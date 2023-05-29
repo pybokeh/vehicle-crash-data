@@ -1,0 +1,29 @@
+-- To obtain crash counts by month
+select
+    yyyy_mm_date
+    , count(*) as qty
+from (
+  SELECT
+    strftime(CrashDateTime, '%Y-%m') as yyyy_mm_date
+  FROM crash_statistics
+) as temp
+group by
+    yyyy_mm_date
+order by
+    yyyy_mm_date
+;
+
+-- To obtain (lat, long) coordinates from a certain county and crash date range
+SELECT
+    CrashDateTime
+    , County
+    , Latitude
+    , Longitude
+FROM
+    crash_statistics
+WHERE
+    CrashDateTime between '2022-07-01' and '2022-07-31'
+    and County = 'Franklin County'
+    and not Latitude is NULL
+    and not Longitude is NULL
+;

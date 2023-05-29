@@ -1,0 +1,14 @@
+-- To generate counts by month
+select
+    yyyy_mm_date
+    , count(*) as qty
+from (
+  SELECT
+    crashdatetime,
+    TO_CHAR(crashdatetime, 'YYYY-MM') AS yyyy_mm_date
+  FROM vehicle_crash_data.oh_crash_statistics
+) as temp
+group by
+    yyyy_mm_date
+order by
+    yyyy_mm_date;

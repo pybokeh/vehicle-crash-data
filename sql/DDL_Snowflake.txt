@@ -1,0 +1,5 @@
+use database ipl_tv_db;
+
+create schema vehicle_crash_data;
+
+ALTER TABLE oh_crash_statistics ADD CONSTRAINT oh_crash_stat_pk PRIMARY KEY (documentnumber);
